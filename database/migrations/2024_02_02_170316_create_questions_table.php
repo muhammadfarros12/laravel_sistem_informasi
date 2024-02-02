@@ -13,17 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 20);
-            $table->string('username', 20)->unique();
-            $table->enum('is_admin', [0, 1])->default(0);
-            $table->string('email', 20)->unique();
-            $table->string('phone', 20);
-            $table->string('password');
-            $table->rememberToken();
+            $table->unsignedBigInteger('user_id');
+            $table->enum('status_code', [0, 1])->default(0);
+            $table->string('title', 20);
+            $table->string('status', 20);
+            $table->text('description');
             $table->timestamps();
+
             $table->softDeletes();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('questions');
     }
 };
