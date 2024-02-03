@@ -34,4 +34,16 @@ class NewsController extends Controller
 
         // return response()->json('data');
     }
+
+    public function update(Request $request,$id){
+        // $request->validate([
+        //     'rt' => 'required',
+        //     'title' => 'required',
+        //     'description' => 'required',
+        // ]);
+
+        $news = News::findOrFail($id);
+        $news->update($request->all());
+        return new NewsResource($news->loadMissing('admin:id,username'));
+    }
 }
