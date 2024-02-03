@@ -31,7 +31,14 @@ class AuthenticationController extends Controller
         $request->user()->currentAccessToken()->delete();
     }
 
-    public function me(Request $request){
+    public function store(Request $request){
+        $data = $request->all();
+        $data['password'] = Hash::make($request->password);
+        $create = User::create($data);
+        return response()->json($create); 
+    }
+
+    public function me(){
         return response()->json(Auth::user());
     }
 }

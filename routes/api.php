@@ -24,3 +24,4 @@ Route::get('/questions', [QuestionController::class, 'index']);
 Route::get('/questions/{id}', [QuestionController::class, 'show']);
 
 Route::post('/login', [AuthenticationController::class, 'login']);
+Route::post('/create', [AuthenticationController::class, 'store']);

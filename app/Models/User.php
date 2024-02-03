@@ -21,7 +21,16 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'username',
     ];
+
+    // $table->string('name', 20);
+    // $table->string('username', 20)->unique();
+    // $table->enum('is_admin', [0, 1])->default(0);
+    // $table->string('email', 20)->unique();
+    // $table->string('phone', 20);
+    // $table->string('password');
 
     /**
      * The attributes that should be hidden for serialization.
