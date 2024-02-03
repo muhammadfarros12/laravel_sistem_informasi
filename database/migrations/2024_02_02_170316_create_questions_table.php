@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->enum('status_code', [0, 1])->default(0);
             $table->string('title', 20);
-            $table->string('status', 20);
+            $table->string('status', 100)->nullable();
             $table->text('description');
             $table->timestamps();
 
