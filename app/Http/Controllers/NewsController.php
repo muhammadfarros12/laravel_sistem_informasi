@@ -46,4 +46,10 @@ class NewsController extends Controller
         $news->update($request->all());
         return new NewsResource($news->loadMissing('admin:id,username'));
     }
+
+    public function destroy($id){
+        $news = News::findOrFail($id);
+        $news->delete();
+        return "data id: {$id} berhasil dihapus";
+    }
 }
